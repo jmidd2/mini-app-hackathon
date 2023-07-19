@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { User } from '.prisma/client';
 import { socket } from '../../socket';
 
 export function MyForm() {
@@ -9,8 +10,8 @@ export function MyForm() {
     event.preventDefault();
     setIsLoading(true);
 
-    socket.emit('create-something', value, (res: Object) => {
-      console.log(res);
+    socket.emit('create-something', value, (res: { status: string, users: User[] }) => {
+      console.log(res.users[0].name);
       setIsLoading(false);
     });
   }

@@ -1,4 +1,7 @@
 import {Server} from 'socket.io';
+import {PrismaClient} from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 const io = new Server(3001, {
   cors: {
@@ -7,11 +10,10 @@ const io = new Server(3001, {
 });
 
 io.on('connection', socket => {
-  socket.on('create-something', (arg1, callback) => {
+  socket.on('create-something', async (arg1, callback) => {
     console.log('create-something', arg1);
-    console.log(callback);
-    callback({status: 'ok'});
-
+    const allUsers = await prisma.user.findMany();
+    callback({status: 'ok', users: allUsers});
   });
 });
 

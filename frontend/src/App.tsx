@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { socket } from './socket';
 
-import './App.scss';
 import { ConnectionState } from './Components/ConnectionState/ConnectionState';
-import { Events } from './Events/Events';
+import { Events } from './Components/Events/Events';
 import { ConnectionManager } from './Components/ConnectionManager/ConnectionManager';
 import { MyForm } from './Components/MyForm/MyForm';
+
+import './App.scss';
 
 function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
