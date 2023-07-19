@@ -1,0 +1,9 @@
+'use strict';
+
+var _socket = require('socket.io');
+var io = new _socket.Server(3001);
+io.on('connection', function (socket) {
+  console.log(socket);
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJfc29ja2V0IiwicmVxdWlyZSIsImlvIiwiU2VydmVyIiwib24iLCJzb2NrZXQiLCJjb25zb2xlIiwibG9nIl0sInNvdXJjZXMiOlsiLi4vc3JjL2luZGV4LnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFNlcnZlciB9IGZyb20gJ3NvY2tldC5pbyc7XG5cbmNvbnN0IGlvID0gbmV3IFNlcnZlcigzMDAxKTtcblxuaW8ub24oJ2Nvbm5lY3Rpb24nLCBzb2NrZXQgPT4ge1xuICBjb25zb2xlLmxvZyhzb2NrZXQpO1xufSk7XG4iXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBQUEsT0FBQSxHQUFBQyxPQUFBO0FBRUEsSUFBTUMsRUFBRSxHQUFHLElBQUlDLGNBQU0sQ0FBQyxJQUFJLENBQUM7QUFFM0JELEVBQUUsQ0FBQ0UsRUFBRSxDQUFDLFlBQVksRUFBRSxVQUFBQyxNQUFNLEVBQUk7RUFDNUJDLE9BQU8sQ0FBQ0MsR0FBRyxDQUFDRixNQUFNLENBQUM7QUFDckIsQ0FBQyxDQUFDIn0=
+//# sourceMappingURL=index.ts.map
