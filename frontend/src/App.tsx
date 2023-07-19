@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Todo, User } from '.prisma/client';
 import { socket } from './socket';
 
 import { ConnectionState } from './Components/ConnectionState/ConnectionState';
@@ -8,13 +9,24 @@ import { MyForm } from './Components/MyForm/MyForm';
 
 import './App.scss';
 
+interface TodoWithAuthor extends Todo {
+    author: User
+}
+
 function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
   const [fooEvents, setFooEvents] = useState<string[]>([]);
+  const [todos, setTodos] = useState<TodoWithAuthor[]>([]);
 
   useEffect(() => {
+    // @ts-ignore
     function onConnect() {
       setIsConnected(true);
+      // @ts-ignore
+      socket.emit('todo:list', { withAuthor: true }, (res) => {
+        console.log(res);
+        setTodos(res.data);
+      });
     }
 
     function onDisconnect() {
@@ -47,6 +59,9 @@ function App() {
       <Events events={ fooEvents } />
       <ConnectionManager />
       <MyForm />
+      <div className="row">
+        {todos.length > 0 && todos.map(todo => <p key={ todo.id }>{`${todo.title} - ${todo.author.name}`}</p>)}
+      </div>
     </div>
   );
 }

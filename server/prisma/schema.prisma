@@ -7,27 +7,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  title     String   @db.VarChar(255)
-  createdAt DateTime @default(now()) @db.Timestamp(6)
+model Todo {
+  id        String    @id @unique
+  title     String    @db.VarChar(255)
+  createdAt DateTime  @default(now()) @db.Timestamp(6)
   content   String?
-  published Boolean  @default(false)
+  completed Boolean   @default(false)
+  updatedAt DateTime?
+  updatedBy Int?
+  editor    User?     @relation("EditedTodos", fields: [updatedBy], references: [id], onDelete: NoAction, onUpdate: NoAction)
   authorId  Int
-  author    User     @relation(fields: [authorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-}
-
-model Profile {
-  id     Int     @id @default(autoincrement())
-  bio    String?
-  userId Int     @unique
-  user   User    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  author    User      @relation("CreatedTodos", fields: [authorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
-  name    String?  @db.VarChar(255)
-  email   String   @unique @db.VarChar(255)
-  posts   Post[]
-  profile Profile?
+  id           Int     @id @default(autoincrement())
+  name         String? @db.VarChar(255)
+  email        String  @unique @db.VarChar(255)
+  createdTodos Todo[]  @relation("CreatedTodos")
+  editedTodos  Todo[]  @relation("EditedTodos")
 }
