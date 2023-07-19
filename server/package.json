@@ -25,9 +25,11 @@
   "homepage": "https://github.com/jmidd2/mini-app-hackathon#readme",
   "dependencies": {
     "socket.io": "^4.7.1",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "dotenv": "^16.3.1"
   },
   "devDependencies": {
+    "@types/node": "^20.4.2",
     "@typescript-eslint/parser": "^6.1.0",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "typescript": "^5.1.6",
@@ -35,6 +37,7 @@
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
     "@babel/preset-typescript": "^7.22.5",
-    "prettier": "^3.0.0"
+    "prettier": "^3.0.0",
+    "prisma": "^5.0.0"
   }
 }
