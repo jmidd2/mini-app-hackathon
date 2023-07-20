@@ -1,18 +1,26 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "outDir": "dist",
-    "target": "ESNext",
-    "strict": true,
     "declaration": true,
+    "declarationMap": true,
     "emitDeclarationOnly": true,
     "esModuleInterop": true,
-    "moduleResolution": "NodeNext"
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "lib": [
+      "ES2021"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNext"
   },
   "include": [
     "src/**/*"
   ],
   "exclude": [
-    "node_modules",
-    "../database/prisma"
+    "node_modules"
   ]
 }

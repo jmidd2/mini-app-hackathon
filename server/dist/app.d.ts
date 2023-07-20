@@ -1,6 +1,6 @@
 /// <reference types="node" />
 import { Server, ServerOptions } from 'socket.io';
-import { ClientEvents, ServerEvents } from '../types/Events';
+import { ClientEvents, ServerEvents } from 'frontend/src/types/Events';
 import { TodoRepository } from './Domains/Todos/TodoRepository';
 import { Server as HttpServer } from 'node:http';
 export interface Components {

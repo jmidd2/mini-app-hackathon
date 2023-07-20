@@ -1,5 +1,5 @@
 import {Server, ServerOptions} from 'socket.io';
-import {ClientEvents, ServerEvents} from '../types/Events';
+import {ClientEvents, ServerEvents} from 'frontend/src/types/Events';
 import {TodoRepository} from './Domains/Todos/TodoRepository';
 import createTodoHandlers from './Domains/Todos/TodoSocketEvents';
 import {Server as HttpServer} from 'node:http';

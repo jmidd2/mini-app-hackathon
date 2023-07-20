@@ -31,10 +31,13 @@ __export(client_exports, {
   prisma: () => prisma
 });
 __reExport(client_exports, client_star);
-import * as client_star from '@prisma/client';
 import { PrismaClient } from '@prisma/client';
+import * as client_star from '@prisma/client';
 
-var prisma = global.prisma || new PrismaClient();
+var prisma = global.prisma || new PrismaClient({
+  log: ['query', 'info', 'warn', 'error'],
+  errorFormat: 'pretty'
+});
 if (process.env.NODE_ENV !== 'production')
   global.prisma = prisma;
 

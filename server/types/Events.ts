@@ -1,5 +1,5 @@
 import {TodoId} from '../src/Domains/Todos/TodoRepository';
-import {Prisma, Todo} from '@prisma/client';
+import {Prisma, Todo, User} from 'database';
 
 try {
   console.log('do something');
@@ -7,6 +7,10 @@ try {
   if (e instanceof Prisma.PrismaClientKnownRequestError) {
     console.log('uh-oh');
   }
+}
+
+export interface TodoWithAuthor extends Todo {
+    author: User
 }
 
 export interface ErrorResponse {
@@ -20,6 +24,7 @@ interface Success<T> {
 export type Response<T> = ErrorResponse | Success<T>;
 
 export interface ServerEvents {
+    // 'todo:created': (todo: Todo) => void;
     'todo:created': (todo: Todo) => void;
     'todo:updated': (todo: Todo) => void;
     'todo:deleted': (id: TodoId) => void;
@@ -32,7 +37,7 @@ export interface ClientEvents {
 
     'todo:create': (
         payload: Omit<Todo, 'createdAt' | 'id'>,
-        callback: (res: Response<TodoId>) => void
+        callback: (res: Response<Todo>) => void
     ) => void;
 
     'todo:read': (id: TodoId, callback: (res: Response<Todo>) => void) => void;

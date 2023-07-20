@@ -1,7 +1,12 @@
 import { Todo } from 'database';
 export type TodoId = string;
 export declare class TodoRepository {
-    deleteById(id: TodoId): Promise<void>;
+    deleteById(id: TodoId): Promise<{
+        id: string;
+    }>;
+    update(item: Partial<Todo>): Promise<{
+        id: string;
+    }>;
     findAll(): Promise<(import("@prisma/client/runtime/library").GetResult<{
         id: string;
         title: string;

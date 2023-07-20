@@ -4,9 +4,26 @@ export type TodoId = string;
 
 export class TodoRepository {
   async deleteById(id: TodoId) {
-    await prisma.todo.delete({
+    return prisma.todo.delete({
       where: {
         id: id,
+      },
+      select: {
+        id: true,
+      },
+    });
+  }
+
+  async update(item: Partial<Todo>) {
+    return prisma.todo.update({
+      where: {
+        id: item.id,
+      },
+      data: {
+        completed: item.completed,
+      },
+      select: {
+        id: true,
       },
     });
   }
@@ -27,6 +44,7 @@ export class TodoRepository {
     const {id, title, content, authorId, updatedAt, updatedBy, completed} = entity;
     return prisma.todo.create({
       data: {id, title, content, authorId, updatedAt, updatedBy, completed},
+      include: {author: true},
     });
   }
 }

@@ -5,9 +5,9 @@
   "author": "Jon Middleton",
   "license": "ISC",
   "workspaces": [
+    "database",
     "server",
-    "frontend",
-    "database"
+    "frontend"
   ],
   "bugs": {
     "url": "https://github.com/jmidd2/mini-app-hackathon/issues"
