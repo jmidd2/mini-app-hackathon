@@ -1,14 +1,15 @@
-const { PrismaClient } = require('@prisma/client');
-const { v4: uuid } = require('uuid');
+import {PrismaClient} from '@prisma/client';
+import {v4 as uuid} from 'uuid';
+
 const prisma = new PrismaClient();
 
 async function main() {
-  const alice = await prisma.user.upsert({
-    where: { email: 'alice@testuser.com' },
-    update: {},
-    create: {
-      email: 'alice@testuser.com',
-      name: 'Alice',
+    const alice = await prisma.user.upsert({
+        where: {email: 'alice@testuser.com'},
+        update: {},
+        create: {
+            email: 'alice@testuser.com',
+            name: 'Alice',
       createdTodos: {
         create: {
           id: uuid(),

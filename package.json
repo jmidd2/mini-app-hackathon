@@ -1,0 +1,20 @@
+{
+  "name": "mini-app-hackathon",
+  "version": "0.0.1",
+  "description": "Full stack todo app using React, Prisma, Socket.IO, and PostgreSQL.",
+  "author": "Jon Middleton",
+  "license": "ISC",
+  "workspaces": [
+    "server",
+    "frontend",
+    "database"
+  ],
+  "bugs": {
+    "url": "https://github.com/jmidd2/mini-app-hackathon/issues"
+  },
+  "homepage": "https://github.com/jmidd2/mini-app-hackathon#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmidd2/mini-app-hackathon.git"
+  }
+}

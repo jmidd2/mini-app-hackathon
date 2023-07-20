@@ -1,5 +1,4 @@
-import {prisma} from '../../Database/Prisma';
-import {Todo} from '@prisma/client';
+import {prisma, Todo} from 'database';
 
 export type TodoId = string;
 

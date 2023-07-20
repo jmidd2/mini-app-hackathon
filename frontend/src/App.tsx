@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Todo, User } from '.prisma/client';
+import { Todo, User } from 'database';
 import { socket } from './socket';
 
 import { ConnectionState } from './Components/ConnectionState/ConnectionState';
